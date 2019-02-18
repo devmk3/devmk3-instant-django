@@ -21,7 +21,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 # 本番運用時は別の値に置き換えること。
 # 生成ツール：https://www.miniwebtool.com/django-secret-key-generator/
-SECRET_KEY = '_(u)&e-3076d7_a(gfhb85*)u-u4vwc%#qt7c7q3-t98%lvp&g'
+#SECRET_KEY = '_(u)&e-3076d7_a(gfhb85*)u-u4vwc%#qt7c7q3-t98%lvp&g'
+SECRET_KEY = '+t12&7(pt27z&q)11sx0&&azezbb#-fv*yvkmk$ydi!jio7d=r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -184,3 +185,10 @@ LOGGING = {
         },
     }
 }
+
+# Heroku用の設定
+import os
+import django_heroku
+
+if 'DYNO' in os.environ:
+    django_heroku.settings(locals())
