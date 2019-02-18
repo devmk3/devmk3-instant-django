@@ -17,14 +17,11 @@ class ItemFilterSet(django_filters.FilterSet):
 
     # 検索フォームの「並び順」の設定
     order_by = OrderingFilter(
-        initial='作成時間',
         fields=(
-            ('created_at', 'created_at'),
-            ('updated_at', 'updated_at'),
+            ('customer_name', 'customer_name'),
         ),
         field_labels={
-            'created_at': '作成時間',
-            'updated_at': '更新時間',
+            'customer_name': '名前',
         },
         label='並び順'
     )
@@ -33,6 +30,10 @@ class ItemFilterSet(django_filters.FilterSet):
         model = Item
         # 一部フィールドを除きモデルクラスの定義を全て引用する
         exclude = ['created_at', 'updated_by', 'updated_at', ]
+        
+        # 表示するフィールド
+        fields = ('customer_name',)
+
         # 文字列検索のデフォルトを部分一致に変更
         filter_overrides = {
             models.CharField: {
